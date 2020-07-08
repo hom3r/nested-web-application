@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parent", "parent-app\parent.csproj", "{C83C983D-D8C5-46A1-B8A5-C1D7B308CC31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "child", "child-app\child.csproj", "{B66D6ACC-987A-4049-8327-BDE717F6EE42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C83C983D-D8C5-46A1-B8A5-C1D7B308CC31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83C983D-D8C5-46A1-B8A5-C1D7B308CC31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83C983D-D8C5-46A1-B8A5-C1D7B308CC31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83C983D-D8C5-46A1-B8A5-C1D7B308CC31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B66D6ACC-987A-4049-8327-BDE717F6EE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66D6ACC-987A-4049-8327-BDE717F6EE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66D6ACC-987A-4049-8327-BDE717F6EE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66D6ACC-987A-4049-8327-BDE717F6EE42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+@page
+@model parent.Pages.UserPages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
+}
+
+<h1>Details</h1>
+
+<div>
+    <a class="btn btn-primary" asp-page="./Index">< Back to List</a>
+    <span style="flex: 1"></span>
+    <a class="btn btn-info" asp-page="./Edit" asp-route-id="@Model.UserPage.ID">Edit</a>
+</div>
+
+<hr />
+
+<component type="typeof(PreviewsList)" render-mode="ServerPrerendered"
+           param-PageId="@Model.UserPage.ID" param-ClientHost="@Model.ClientHost" />

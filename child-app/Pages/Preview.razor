@@ -1,0 +1,51 @@
+﻿@page "/preview"
+@using Microsoft.AspNetCore.WebUtilities;
+@using child.Services;
+@using child.Models;
+
+@inject NavigationManager NavManager
+@inject PageService PageService
+@inject IJSRuntime JSRuntime;
+
+
+<h1 id="page-title">@Name</h1>
+
+<div id="page-content" class="content">
+    @((MarkupString)Content)
+</div>
+
+<input type="hidden" id="previewID" name="previewID" value="@PreviewID" />
+
+<hr />
+<small>
+    Id: @PreviewID<br />
+    Hash: @Hash <br />
+</small>
+
+@code {
+    private string Hash;
+    private string Name;
+    private string Content;
+    private bool EditMode;
+    private int PreviewID;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Name = "loading...";
+        EditMode = false;
+
+        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("hash", out var param))
+        {
+            Hash = param.First();
+            UserPage page = await PageService.GetPageByHash(Hash);
+
+            if (page != null)
+            {
+                PreviewID = page.ID;
+                Name = page.Name;
+                Content = page.Content;
+            }
+        }
+    }
+}

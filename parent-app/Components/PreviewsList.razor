@@ -1,0 +1,90 @@
+﻿@using parent.Models
+@using parent.Services
+@inject PreviewService PreviewService
+@inject IJSRuntime JSRuntime;
+
+@namespace parent.Components
+
+<h3>Previews</h3>
+
+@if (CurrentPreview != null)
+{
+    <p>
+        <button class="btn btn-warning" @onclick="Edit">Edit</button>
+        <button class="btn btn-success" @onclick="Save">Save</button>
+    </p>
+    <iframe id="client-iframe" src="@ClientHost/preview?hash=@CurrentPreview.Hash"></iframe>
+}
+<p><button class="btn btn-primary" @onclick="AddPreview">Generate preview</button></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Hash</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var preview in Previews)
+        {
+            <tr>
+                <td>@preview.ID</td>
+                <td>@preview.Hash</td>
+                <td>
+                    <button class="btn btn-danger" @onclick="((e) => DeletePreview(preview.ID))">Delete</button>
+                    <button class="btn btn-success" @onclick="((e) => SelectPreview(preview))">Select</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public int PageId { get; set; }
+    [Parameter]
+    public string ClientHost { get; set; }
+
+    //private List<UserPage> userPages;
+    List<UserPagePreview> Previews;
+    UserPagePreview CurrentPreview;
+
+    // TODO add some state management
+    private void DeletePreview(int previewId)
+    {
+        PreviewService.DeletePreview(previewId);
+        FetchPreviews();
+    }
+
+    private void SelectPreview(UserPagePreview preview)
+    {
+        CurrentPreview = preview;
+    }
+    private void AddPreview()
+    {
+        PreviewService.AddPreview(PageId);
+        FetchPreviews();
+    }
+
+    private void FetchPreviews()
+    {
+        Previews = PreviewService.GetPreviews(PageId);
+    }
+
+    protected override void OnInitialized()
+    {
+        FetchPreviews();
+    }
+
+    private async void Save()
+    {
+        var token = "HASH";
+        await JSRuntime.InvokeAsync<string>("sendSaveMessage", token);
+    }
+    private async void Edit()
+    {
+        await JSRuntime.InvokeAsync<string>("sendEnableMessage", "test");
+    }
+}
