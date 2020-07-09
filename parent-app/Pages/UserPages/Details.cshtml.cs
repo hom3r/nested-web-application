@@ -31,7 +31,7 @@ namespace parent.Pages.UserPages
 
         public UserPage UserPage { get; set; }
         public IList<UserPagePreview> Previews { get; set; }
-        public string ClientHost { get; private set; }
+        public string ChildHost { get; private set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -46,7 +46,7 @@ namespace parent.Pages.UserPages
             // code moved to the service
             UserPage = await previewService.GetUserPage((int)id);
             Previews = previewService.GetPreviews((int)id);
-            ClientHost = configuration["ChildHost"];
+            ChildHost = configuration["ChildHost"];
 
             //Previews = await _context.UserPagePreview
             //    .Where(x => x.Page.Equals(UserPage))

@@ -20,6 +20,11 @@ namespace child.Services
             configuration = _configuration;
         }
 
+        public string GetParentHost()
+        {
+            return configuration["ParentHost"];
+        }
+
         public async Task<UserPage> GetPageByHash(string hash)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, string.Format("{0}/api/preview/{1}", configuration["ParentHost"], hash));

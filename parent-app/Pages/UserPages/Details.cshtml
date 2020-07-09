@@ -8,6 +8,8 @@
 
 <h1>Details</h1>
 
+<input type="hidden" id="child-host" value="@Model.ChildHost" />
+
 <div>
     <a class="btn btn-primary" asp-page="./Index">< Back to List</a>
     <span style="flex: 1"></span>
@@ -17,4 +19,4 @@
 <hr />
 
 <component type="typeof(PreviewsList)" render-mode="ServerPrerendered"
-           param-PageId="@Model.UserPage.ID" param-ClientHost="@Model.ClientHost" />
+           param-PageId="@Model.UserPage.ID" param-ClientHost="@Model.ChildHost" />

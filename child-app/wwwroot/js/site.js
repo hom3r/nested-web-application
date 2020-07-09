@@ -1,7 +1,10 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-const PARENT_URL = 'https://localhost:5001';
+const URL_ID = 'parent-host';
+var element = document.getElementById(URL_ID);
+
+const PARENT_URL = element ? element.value : "http://localhost:5000";;
 
 console.log("client ready");
 
@@ -21,7 +24,7 @@ window.enableEditMode = function(param) {
 
 function receiver(e) {
     console.log("message received");
-    console.log(e);
+ //   console.log(e);
 
     if (e.origin == PARENT_URL) {
         switch (e.data) {
@@ -33,7 +36,7 @@ function receiver(e) {
                 var content = document.getElementById("page-content").innerHTML;
                 var previewID = document.getElementById("previewID").value;
 
-                console.log("save content", title, content);
+                console.log("saving content");
                 $.ajax({
                     url: PARENT_URL + '/api/preview/' + previewID,
                     method: 'PUT',

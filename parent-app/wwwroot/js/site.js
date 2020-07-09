@@ -3,8 +3,10 @@
 
 // Write your Javascript code.
 
-const FRAME_ID = "client-iframe";
-const CLIENT_URL = "https://localhost:5000/";
+const FRAME_ID = "child-iframe";
+const URL_ID = "child-host";
+var element = document.getElementById(URL_ID);
+const CLIENT_URL = element ? element.value : "https://localhost:5000";;
 
 function sendMessage(message) {
     var o = document.getElementById(FRAME_ID);
