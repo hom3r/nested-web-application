@@ -10,10 +10,10 @@
 @if (CurrentPreview != null)
 {
     <p>
-        <button class="btn btn-warning" @onclick="Edit">Edit</button>
+        <button class="btn btn-warning" @onclick="Edit">Enable Edit mode</button>
         <button class="btn btn-success" @onclick="Save">Save</button>
     </p>
-    <iframe id="client-iframe" src="@ClientHost/preview?hash=@CurrentPreview.Hash"></iframe>
+    <iframe id="child-iframe" src="@ClientHost/preview?hash=@CurrentPreview.Hash"></iframe>
 }
 <p><button class="btn btn-primary" @onclick="AddPreview">Generate preview</button></p>
 
@@ -46,6 +46,8 @@
     public int PageId { get; set; }
     [Parameter]
     public string ClientHost { get; set; }
+
+    private bool EditMode;
 
     //private List<UserPage> userPages;
     List<UserPagePreview> Previews;
