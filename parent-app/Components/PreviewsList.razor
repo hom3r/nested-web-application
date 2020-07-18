@@ -49,11 +49,9 @@
 
     private bool EditMode;
 
-    //private List<UserPage> userPages;
     List<UserPagePreview> Previews;
     UserPagePreview CurrentPreview;
 
-    // TODO add some state management
     private void DeletePreview(int previewId)
     {
         PreviewService.DeletePreview(previewId);

@@ -20,11 +20,8 @@ window.enableEditMode = function(param) {
 };
 
 
-// TODO sync the names name-title
-
 function receiver(e) {
     console.log("message received");
- //   console.log(e);
 
     if (e.origin == PARENT_URL) {
         switch (e.data) {

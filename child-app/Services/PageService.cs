@@ -43,7 +43,5 @@ namespace child.Services
                 return null;
             }
         }
-
-        // TODO get data by GET request to the parent app
     }
 }

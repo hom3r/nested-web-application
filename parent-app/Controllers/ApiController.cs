@@ -19,14 +19,6 @@ namespace parent
         }
 
         // GET api/preview/5
-        //[HttpGet("{id}")]
-        //public async Task<string> GetAsync(int id)
-        //{
-        //    UserPage userPage = await previewService.GetUserPage(id);
-        //    return JsonSerializer.Serialize(userPage);
-        //}
-
-        // GET api/preview/5
         [HttpGet("{hash}")]
         public async Task<string> GetAsync(string hash)
         {
@@ -42,7 +34,6 @@ namespace parent
             UserPage newPage = previewService.UpdateUserPage(pageId, page.Name, page.Content);
             if (newPage == null)
             {
-                // TODO set response code
                 return "{ \"message\": \"Preview not found\" }";
             }
             return JsonSerializer.Serialize(page);

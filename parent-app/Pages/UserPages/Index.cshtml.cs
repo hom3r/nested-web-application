@@ -30,7 +30,6 @@ namespace parent.Pages.UserPages
         public async Task OnGetAsync()
         { 
             // set current user as the owner
-            // TODO is this the best approach?
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
             UserPage = await _context.UserPage

@@ -85,8 +85,6 @@ namespace parent.Services
             }
         }
 
-
-        // TODO move this into a separate service
         private static string GenerateToken(int numberOfBytes = 32)
         {
             return WebEncoders.Base64UrlEncode(GenerateRandomBytes(numberOfBytes));

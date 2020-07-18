@@ -43,7 +43,6 @@ namespace parent.Pages.UserPages
             }
 
             // set current user as the owner
-            // TODO is this the best approach?
             UserPage.Owner = await _userManager.GetUserAsync(HttpContext.User);
 
             _context.UserPage.Add(UserPage);

@@ -30,13 +30,9 @@ namespace parent
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddRazorPages()
-                // TODO set only for development, not production
-                .AddRazorRuntimeCompilation();
+            services.AddRazorPages();
 
             // enable CORS
-            // TODO get URL from config
-            // TODO create strict rules
             services.AddCors(o => o.AddPolicy("AllowClient", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -79,18 +75,6 @@ namespace parent
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
                 endpoints.MapControllers();
-
-                //// TODO move this outside the Startup class
-                //endpoints.MapGet("/api/page/{id:int}", async context =>
-                //{
-                //    var id = context.Request.RouteValues["id"];
-                //    await context.Response.WriteAsync(String.Format("GET page endpoint, id: {0}", id));
-                //});
-
-                //endpoints.MapPost("/api/page/{id:int}", async context =>
-                //{
-                //    await context.Response.WriteAsync("POST page endpoint");
-                //});
             });
         }
     }
