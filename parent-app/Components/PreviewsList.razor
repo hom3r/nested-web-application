@@ -14,8 +14,10 @@
         <button class="btn btn-success" @onclick="Save">Save</button>
     </p>
     <iframe id="child-iframe" src="@ClientHost/preview?hash=@CurrentPreview.Hash"></iframe>
+    <input type="text" class="form-control" value="@ClientHost/preview?hash=@CurrentPreview.Hash" disabled />
+    <hr />
 }
-<p><button class="btn btn-primary" @onclick="AddPreview">Generate preview</button></p>
+<p class="text-right"><button class="btn btn-primary" @onclick="AddPreview">Generate preview</button></p>
 
 <table class="table">
     <thead>
